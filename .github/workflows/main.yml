@@ -1,9 +1,15 @@
-on: push
 name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches:
+      - main  # Ubah ke branch Anda sesuai kebutuhan
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
@@ -12,6 +18,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftpupload.net
-        username: $((secrets.ftp_username}}
+        username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir:/bilaaaalib.rf.gd/htdocs/
+        server-dir: /bilaaaalib.rf.gd/htdocs/
